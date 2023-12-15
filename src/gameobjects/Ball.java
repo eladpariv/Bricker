@@ -2,7 +2,6 @@ package src.gameobjects;
 
 import danogl.GameObject;
 import danogl.collisions.Collision;
-//import danogl.gocollection.Collision;
 import danogl.gui.Sound;
 import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
