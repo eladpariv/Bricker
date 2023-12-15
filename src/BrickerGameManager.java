@@ -1,5 +1,6 @@
 package src;
 
+
 import src.brick_strategies.CollisionStrategy;
 import src.gameobjects.*;
 import danogl.GameManager;
@@ -10,9 +11,9 @@ import danogl.gui.rendering.RectangleRenderable;
 import danogl.gui.rendering.Renderable;
 import danogl.util.Counter;
 import danogl.util.Vector2;
-
 import java.awt.*;
 import java.util.Random;
+
 
 public class BrickerGameManager extends GameManager {
     private static final int BORDER_WIDTH = 10;
@@ -58,7 +59,6 @@ public class BrickerGameManager extends GameManager {
     private WindowController windowController;
     private UserInputListener inputListener;
 
-
     public BrickerGameManager(String windowTitle, Vector2 windowDimensions) {
         super(windowTitle, windowDimensions);
         this.brickCounter = new danogl.util.Counter();
@@ -74,6 +74,7 @@ public class BrickerGameManager extends GameManager {
                                WindowController windowController) {
         this.windowController = windowController;
         this.inputListener = inputListener;
+        
         //initialization
         super.initializeGame(imageReader, soundReader, inputListener, windowController);
         windowDimensions = windowController.getWindowDimensions();
@@ -85,13 +86,14 @@ public class BrickerGameManager extends GameManager {
         Renderable paddleImage = imageReader.readImage(
                 PADDLE_IMG, false);
         createUserPaddle(paddleImage, inputListener, windowDimensions);
-//        createAIPaddle(windowDimensions, paddleImage);
 
         //create borders
         createBorders(windowDimensions);
+        
         //create bricks
         Renderable brickImage = imageReader.readImage(BRICK_IMG, true);
         createBricks(windowDimensions, brickImage, ROWS_NUMBER);
+        
         //createGraphicLivesCounter
         createGraphicLivesCounter(new Vector2(GRAPHIC_LIVES_POSITION,
                         windowDimensions.y() - DISTANS_FROM_THE_EDGE)
@@ -99,10 +101,10 @@ public class BrickerGameManager extends GameManager {
                         LIVES_AND_NUMERIC_COUNTERS_SIZE), imageReader);
 
         //create Numeric counter
-
         createNumericLiveCounter(new Vector2(DISTANS_FROM_THE_EDGE,
                         windowDimensions.y() - DISTANS_FROM_THE_EDGE),
                 new Vector2(LIVES_AND_NUMERIC_COUNTERS_SIZE, LIVES_AND_NUMERIC_COUNTERS_SIZE));
+        
         // create background
         createBackGround(imageReader, windowDimensions);
 
@@ -119,7 +121,6 @@ public class BrickerGameManager extends GameManager {
     public void update(float deltaTime) {
         super.update(deltaTime);
         checkForGameEnd();
-//        System.out.println(liveCounter.value());
     }
 
     private void createNumericLiveCounter(Vector2 position, Vector2 widgetDimension) {
@@ -139,7 +140,6 @@ public class BrickerGameManager extends GameManager {
     private void checkForGameEnd() {
 
         double ballHeight = ball.getCenter().y();
-//        UserInputListener userInputListener = new UserInputListener()
         String prompt = "";
         if (brickCounter.value() == 0 || this.inputListener.isKeyPressed('W')) {
             //we win
@@ -215,15 +215,6 @@ public class BrickerGameManager extends GameManager {
         gameObjects().addGameObject(userPaddle);
     }
 
-//    private void createAIPaddle(Vector2 windowDimensions, Renderable paddleImage) {
-//        GameObject aiPaddle = new AIPaddle(
-//                Vector2.ZERO, new Vector2(PADDLE_WIDTH, PADDLE_HEIGHT), paddleImage,
-//                ball);
-//        aiPaddle.setCenter(
-//                new Vector2(windowDimensions.x() / 2, 30));
-//        gameObjects().addGameObject(aiPaddle);
-//    }
-
     private void createBricks(Vector2 windowDimensions, Renderable brickImage, int rows) {
         CollisionStrategy collisionStrategy = new CollisionStrategy(gameObjects());
         int x = FIRST_BRICK_X_COORDINATE;
@@ -235,16 +226,12 @@ public class BrickerGameManager extends GameManager {
                         , brickImage, collisionStrategy, this.brickCounter);
                 brick.setCenter(new Vector2(x, y));
                 gameObjects().addGameObject(brick, 0);
-//                gameObjects().removeGameObject(brick);
                 x += BRICK_WIDTH;
             }
             x = FIRST_BRICK_X_COORDINATE;
             y += BRICK_HEIGHT;
         }
 
-        /*GameObject brick = new Brick(new Vector2(0, 0), new Vector2(BREAK_WIDTH, BREAK_HEIGHT)
-                , brickImage, null, this.counter);
-        gameObjects().addGameObject(brick);*/
 
 
     }
