@@ -1,14 +1,12 @@
 package src.gameobjects;
 
 import src.brick_strategies.CollisionStrategy;
-
 import danogl.GameObject;
 import danogl.collisions.Collision;
 
 public class Brick extends GameObject {
     private danogl.util.Counter counter;
     private CollisionStrategy strategy;
-
 
     /**
      * Construct a new GameObject instance.
