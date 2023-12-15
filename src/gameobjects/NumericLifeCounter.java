@@ -5,7 +5,6 @@ import danogl.collisions.GameObjectCollection;
 import danogl.gui.rendering.Renderable;
 import danogl.gui.rendering.TextRenderable;
 import danogl.util.Vector2;
-
 import java.awt.*;
 
 public class NumericLifeCounter extends GameObject {
