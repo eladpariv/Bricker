@@ -4,7 +4,6 @@ import danogl.GameObject;
 import danogl.gui.UserInputListener;
 import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
-
 import java.awt.event.KeyEvent;
 
 public class Paddle extends GameObject {
